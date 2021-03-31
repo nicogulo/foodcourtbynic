@@ -1,0 +1,234 @@
+:root {
+  --primary-bg: #FFBA00;
+  --secondary-bg: #ffffff;
+  --third-bg: #E5E5E5;
+  --font-pm: #929292;
+  --font-title: #666666;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+body {
+  background: #607D8B
+}
+
+.preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: #ffffff;
+  transition: 0.1s;
+}
+
+.preloader.loaded {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.preloader.loaded .object {
+  animation: none;
+}
+
+#loading {
+  background-color: #ffffff;
+}
+
+#loading-center-object {
+  width: 200px;
+  height: 200px;
+  transform: rotate(-135deg);
+}
+
+.preloader-body {
+  text-align: center;
+}
+
+.object {
+  border-radius: 50%;
+  position: absolute;
+  border: 4px solid #fff;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  animation: animate 2s infinite;
+}
+
+#object_one {
+  left: 75px;
+  top: 75px;
+  width: 50px;
+  height: 50px;
+}
+
+#object_two {
+  top: 65px;
+  left: 65px;
+  width: 70px;
+  height: 70px;
+  animation-delay: 0.2s;
+}
+
+#object_three {
+  top: 55px;
+  left: 55px;
+  width: 90px;
+  height: 90px;
+  animation-delay: 0.4s;
+}
+
+#object_four {
+  top: 45px;
+  left: 45px;
+  width: 110px;
+  height: 110px;
+  animation-delay: 0.6s;
+}
+@keyframes animate {
+  50% {
+    transform: rotate(360deg) scale(0.8);
+  }
+}
+
+.boxes {
+  background: var(--secondary-bg);
+  width: 100%;
+  height: 150px;
+}
+
+.search{
+  margin: 30px auto;
+}
+
+.search input {
+  display: block;
+  margin: 20px auto;
+  width: 90%;
+  height: 48px;
+  border: none;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 0 20px;
+  border: 1px solid #e9e9e9;
+  z-index: 3;
+}
+.search input::placeholder {
+  color: #bdbdbd;
+}
+
+
+.slider{
+  margin: auto;
+  width: 90%;
+  height: 150px;
+  border-radius: 8px;
+}
+.slider img{
+  margin: auto;
+  width: 90%;
+  height: 200px;
+  border-radius: 8px;
+}
+
+.text-brown {
+  color: #795548;
+}
+#app {
+  background: white;
+  position: relative;
+  width: 480px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  min-height: 100vh;
+  padding-bottom:60px;
+}
+.navbar {
+  width: 480px;
+  position: fixed;
+  bottom: 0;
+  display: block
+}
+.nav-home {
+  padding: 15px 20px;
+}
+h3.page-title {
+  font-weight: bold;
+  padding: 15px 10px;
+}
+.menu-wrapper {
+  margin: 10px;
+}
+.menu-section-title {
+  width: 100%;
+  padding: 0 10px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+.menu-name {
+  font-size: 1em;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.menu.card .card-body{
+  padding: 0.5rem;
+}
+.cart-badge {
+  font-size: .5em;
+  position: absolute;
+  bottom:0;
+}
+#cart_num_menu.cart-badge {
+  font-size: .5em;
+  position: absolute;
+  bottom:15px;
+}
+.btn-back {
+  font-size: 1.75rem;
+  padding: 10px;
+}
+#order-btn {
+  border-top: 1px solid #ccc;
+  position: fixed;
+  bottom:0;
+  width: inherit;
+  padding: 15px;
+}
+#order-btn button {
+  font-weight: bold;
+}
+.btn-cart-action {
+  font-size: .2rem
+}
+.profile-photo {
+  width: 80px;
+  margin:0 auto;
+}
+.profile-photo img {
+  width: 80px;
+  border-radius: 50%;
+}
+.acc-name {
+  font-weight: bold;
+  font-size: 1rem
+}
+.loader {
+  height: 100vh;
+  width: inherit;
+  position: fixed;
+  top:0;
+}
+.spinner-wrapper {
+  margin-top: 40vh;
+  font-size: 2rem;
+}
+@media (max-width: 480px){
+  #app, .navbar {
+    width: 100%
+  }
+}
