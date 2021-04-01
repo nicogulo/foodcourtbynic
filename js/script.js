@@ -399,9 +399,17 @@ function showOrder(id){
 		}
 	}
 
+
+	// add zero at minutes
+	function addZero(i) {
+		if (i < 10) {
+			i = "0" + i;
+		}
+		return i;
+	}
 	var datetime = new Date(order_item.tanggal)
 	var date = datetime.getDate()+ ' ' + numToMonth(datetime.getMonth()) + ' ' + datetime.getFullYear()
-	var time = datetime.getHours() + ':' + datetime.getMinutes()
+	var time = datetime.getHours() + ':' + addZero.getMinutes()
 	$("#tanggal-detail-order").html(date)
 	$("#jam-detail-order").html(time)
 
