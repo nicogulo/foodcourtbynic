@@ -187,6 +187,10 @@ h3.page-title {
   text-transform: uppercase;
   font-weight: bold;
 }
+
+.menu-list{
+  padding-bottom: 100px;
+}
 .menu.card .card-body{
   padding: 0.5rem;
 }
@@ -208,6 +212,27 @@ h3.page-title {
   margin: auto 10px;
   width: 120px;
   height: 36px;
+}
+
+.btn-tambah {
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  background-color: var(--primary-bg);
+  border: none;
+  color: #fff;
+  text-align: center;
+  transition-duration: 0.4s;
+  overflow: hidden;
+  box-shadow: 0 5px 15px #90a7be;
+  border-top-left-radius: 100px;
+}
+
+.btn-tambah:hover {
+  background: #fff;
+  box-shadow: 0px 2px 10px 5px #FFBA00;
+  color: #000;
 }
 #order-btn {
   border-top: 1px solid #ccc;
