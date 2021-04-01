@@ -192,6 +192,11 @@ h3.page-title {
   font-size: 1.75rem;
   padding: 10px;
 }
+.button-home{
+  margin: auto 10px;
+  width: 120px;
+  height: 36px;
+}
 #order-btn {
   border-top: 1px solid #ccc;
   position: fixed;
