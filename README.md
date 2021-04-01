@@ -1,4 +1,4 @@
-# Food Order App
+<!-- # Food Order App
 
 Project ini dibuat untuk mempelajari Line Front End Framework (LIFF)
 
@@ -67,4 +67,4 @@ cart = JSON.parse(localStorage.getItem('cart'))
 
 ![](https://raw.githubusercontent.com/jhonarendra/food-app-liff/master/screenshot/screenshot-1.png)
 
-![](https://raw.githubusercontent.com/jhonarendra/food-app-liff/master/screenshot/overview.gif)
+![](https://raw.githubusercontent.com/jhonarendra/food-app-liff/master/screenshot/overview.gif) -->
