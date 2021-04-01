@@ -12,6 +12,17 @@ html{
 body {
   background: #607D8B
 }
+body::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--secondary-bg);
+}
 
 .preloader {
   position: fixed;
@@ -140,7 +151,7 @@ body {
   color: #795548;
 }
 #app {
-  background: white;
+  background: var(--secondary-bg);
   position: relative;
   width: 480px;
   margin: 0 auto;
@@ -152,7 +163,8 @@ body {
   width: 480px;
   position: fixed;
   bottom: 0;
-  display: block
+  display: block;
+  background-color: var(--primary-bg);
 }
 .nav-home {
   padding: 15px 20px;
