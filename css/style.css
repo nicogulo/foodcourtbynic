@@ -225,7 +225,7 @@ h3.page-title {
   text-align: center;
   transition-duration: 0.4s;
   overflow: hidden;
-  box-shadow: 0 5px 15px #90a7be;
+  box-shadow: 0 5px 10px #90a7be;
   border-top-left-radius: 100px;
 }
 
