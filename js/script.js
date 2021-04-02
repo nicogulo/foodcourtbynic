@@ -84,7 +84,7 @@ function loadCart(){
 		for (i in cart){
 			var nominal = cart[i].jumlah * cart[i].harga
 			data_cart += `<div class="col-12 text-center">
-			<img src="img/menu/` + cart[i].foto + `" style="width: 80%" class="card-img img-fluid pt-2" alt="card image">
+			<img src="img/menu/` + cart[i].foto + `" style="width: 80%;" class="card-img img-fluid pt-2" alt="card image">
 		</div>
 		<div class="cart-item row my-1">
 			<div class="col-6 text-left" style="padding-left:30px;">
