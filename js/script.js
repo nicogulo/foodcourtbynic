@@ -184,7 +184,7 @@ function loadOrder(){
 						</div>`
 		}
 	} else {
-		data_order += `<div class="alert alert-warning m-2">Belum ada pesanan dari anda</div>`
+		data_order += `<div class="alert alert-warning m-3">Belum ada pesanan dari anda</div>`
 	}
 	$("#order-content").html(data_order)
 }
