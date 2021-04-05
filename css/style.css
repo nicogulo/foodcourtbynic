@@ -198,8 +198,6 @@ input[type=submit] {
 }
 .slider img{
   margin: auto;
-  width: 90%;
-  height: 180px;
   border-radius: 8px;
 }
 
