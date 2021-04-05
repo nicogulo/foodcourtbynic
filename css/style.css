@@ -199,13 +199,11 @@ input[type=submit] {
 .slider img{
   margin: auto;
   width: 90%;
-  height: 200px;
+  height: 180px;
   border-radius: 8px;
 }
 
-.text-brown {
-  color: #795548;
-}
+
 #app {
   background: var(--secondary-bg);
   position: relative;
@@ -325,8 +323,17 @@ h3.page-title {
   margin-top: 40vh;
   font-size: 2rem;
 }
-@media (max-width: 480px){
+@media (max-width: 400px){
   #app, .navbar {
     width: 100%
   }
+  
+.button-home{
+  margin: auto 5px;
+  width: 120px;
+  height: 36px;
 }
+  
+}
+
+
