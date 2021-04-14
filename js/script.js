@@ -224,7 +224,7 @@ function loadMenu() {
 			<div class="col-sm-4">
 				<img src="img/menu/` +
       data_menu[i].foto +
-      `" style="width: 120px; background-color: #FFEFDF;" class="card-img img-fluid" alt="card image">
+      `" style="background-color: #FFEFDF; width: 120px;" class="card-img img-fluid" alt="card image">
 				
 			</div>
 		<div class="col-sm-8">

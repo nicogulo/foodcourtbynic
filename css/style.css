@@ -24,6 +24,12 @@ body::-webkit-scrollbar-thumb {
   background: var(--secondary-bg);
 }
 
+a {
+  text-decoration: none;
+}
+a:hover {
+  color: var(--primary-bg);
+}
 .primary-color {
   color: var(--primary-bg);
 }
