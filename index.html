@@ -37,16 +37,16 @@
 				<div class="nav-home">
 					<div class="row">
 						<div class="col-8">
-							<a href="javascript:void(0)" class="text-dark"  style="text-decoration: none;"><b>Pojok Kebon Pisang</b></a>
+							<a href="javascript:void(0)" class="primary-color"  style="text-decoration: none;"><b>Pojok Kebon Pisang</b></a>
 						</div>
 						<div class="col-4 text-right">
 							<div class="cart-wrapper" onclick="setPage('account')">
-								<i class="fas fa-user-circle fa-2x text-warning""></i>
+								<i class="fas fa-user-circle fa-2x primary-color""></i>
 								<!-- <span id=" cart_num" class="badge badge-danger cart-badge">3</span> -->
 							</div>
 						</div>
 						<div class="col-12 text-dark" style="margin: 20px 0 -20px 0;">
-							<h6>Selamat Datang <span id="profile-display-name" class="text-warning"></span></h6>
+							<h6>Selamat Datang <span id="profile-display-name" class="primary-color"></span></h6>
 							<h6>Silahkan pilih menu favorit dan</h6>
 							<h6>temukan menu rekomendasi untuk anda!</h6>
 						</div>
@@ -58,7 +58,7 @@
 						<div class="input-group md-form form-sm form-2 pl-0">
 							<input class="form-control my-0 py-1 amber-border" type="text" id="myInput" onkeyup="myFunction()" placeholder="Cari menu">
 							<div class="input-group-append">
-								<span class="input-group-text amber" style="background-color: #FFBA00;"><i
+								<span class="input-group-text amber" style="background-color: #88b06a;"><i
 										class="fas fa-search text-white" aria-hidden="true"></i></span>
 							</div>
 						</div>
@@ -79,15 +79,15 @@
 					<div class="row">
 						<div class="col-12 text-center mt-5">
 							<a href="#donut"><button class="btn button-home text-white"
-									style="background-color: #FFBA00;">Snack</button></a>
-							<a href="#pinkdonut"><button class="btn button-home text-white" style="background-color: #FFBA00;">Minuman</button></a>
-							<a href="#mixdonut"><button class="btn button-home text-white" style="background-color: #FFBA00;">Mix</button></a>
+									style="background-color: #88b06a;">Snack</button></a>
+							<a href="#pinkdonut"><button class="btn button-home text-white" style="background-color: #88b06a;">Minuman</button></a>
+							<a href="#mixdonut"><button class="btn button-home text-white" style="background-color: #88b06a;">Mix</button></a>
 						</div>
 					</div>
 
 					<div class="row m-2 menu-list text-center">
 						<div class="col-6 my-2" onclick="setPage('menu')">
-							<a href="#food" class="text-warning">
+							<a href="#food" class="primary-color" style="text-decoration: none;">
 								<div class="menu card">
 									<img class="card-img-top" src="img/menu/BaconKingJr.png" alt="Card image cap">
 									<div class="card-body">
@@ -97,7 +97,7 @@
 							</a>
 						</div>
 						<div class="col-6 my-2" onclick="setPage('menu')">
-							<a href="#drink" class="text-warning">
+							<a href="#drink" class="primary-color" style="text-decoration: none;">
 								<div class="menu card">
 									<img class="card-img-top" src="img/menu/CocaCola.png" alt="Card image cap">
 									<div class="card-body">
@@ -107,7 +107,7 @@
 							</a>
 						</div>
 						<div class="col-6 my-2" onclick="setPage('menu')">
-							<a href="#snack" class="text-warning">
+							<a href="#snack" class="primary-color" style="text-decoration: none;">
 								<div class="menu card">
 									<img class="card-img-top" src="img/menu/PancakesandSausages.png" alt="Card image cap">
 									<div class="card-body">
@@ -125,20 +125,20 @@
 			<div id="menu" style="display: none">
 				<div class="row">
 					<div class="col-8">
-						<h3 class="text-warning page-title m-3">MENU</h3>
+						<h3 class="primary-color page-title m-3">MENU</h3>
 					</div>
 					<div class="col-4 text-right">
 						<div class="cart-wrapper m-3 py-3 pr-3" onclick="setPage('cart')" style="position: relative;">
-							<i class="fas fa-shopping-cart text-warning"></i>
-							<span id="cart_num_menu" class="badge badge-warning cart-badge">3</span>
+							<i class="fas fa-shopping-cart primary-color"></i>
+							<span id="cart_num_menu" class="badge badge-success cart-badge">3</span>
 						</div>
 					</div>
 				</div>
-				<div class="alert alert-warning m-3">
+				<div class="alert alert-success m-3">
 					Klik pada menu untuk menambahkan ke keranjang
 				</div>
 				<div class="menu-wrapper">
-					<div class="menu-section-title">
+					<div class="menu-section-title primary-color">
 						<span id="food">Food</span>
 					</div>
 					<div id="food-menu" class="menu-item row">
@@ -146,7 +146,7 @@
 				</div>
 
 				<div class="menu-wrapper">
-					<div class="menu-section-title bg-warning">
+					<div class="menu-section-title primary-color">
 						<span>Drink</span>
 					</div>
 					<div id="drink-menu" class="menu-item row">
@@ -154,7 +154,7 @@
 				</div>
 
 				<div class="menu-wrapper">
-					<div class="menu-section-title bg-warning">
+					<div class="menu-section-title primary-color">
 						<span>Snack</span>
 					</div>
 					<div id="snack-menu" class="menu-item row">
@@ -162,13 +162,13 @@
 				</div>
 			</div>
 			<div id="order" style="display: none">
-				<h3 class="text-warning page-title m-3">ORDER HISTORY</h3>
+				<h3 class="primary-color page-title m-3">ORDER HISTORY</h3>
 				<div id="order-content" class="order-wrapper">
 				</div>
 			</div>
 			<div id="account" style="display: none">
 				<div id="profile-wrapper">
-					<h3 class="text-warning page-title mt-3">PROFILE</h3>
+					<h3 class="primary-color page-title mt-3">PROFILE</h3>
 					<div class="profile-content">
 						<div id="profile-photo" class="profile-photo">
 							<img src="apple-touch-icon-180x180.png">
@@ -227,7 +227,7 @@
 				</div>
 
 				<div id="not-login" style="display: none">
-					<div class="alert alert-warning text-center mt-5 m-2">
+					<div class="alert alert-success text-center mt-5 m-2">
 						<h3>Oops anda belum login</h3>
 						<p>Silahkan login dengan akun line anda untuk mengakses profil</p>
 						<p>
@@ -241,12 +241,12 @@
 				<div class="row">
 					<div class="col-2 pr-0">
 						<p class="mt-3 btn-back">
-							<a href="javascript:void(0)" onclick="setPage('menu')" class="text-warning"><i class="fas fa-arrow-left"
+							<a href="javascript:void(0)" onclick="setPage('menu')" class="primary-color"><i class="fas fa-arrow-left"
 									></i></a>
 						</p>
 					</div>
 					<div class="col-10 pl-0">
-						<h3 class="text-warning page-title mt-3">CART</h3>
+						<h3 class="primary-color page-title mt-3">CART</h3>
 					</div>
 				</div>
 
@@ -285,12 +285,12 @@
 				<div class="row">
 					<div class="col-2 pr-0">
 						<p class="mt-3 btn-back">
-							<a href="javascript:void(0)" onclick="setPage('order')" class="text-warning"><i class="fas fa-arrow-left"
+							<a href="javascript:void(0)" onclick="setPage('order')" class="primary-color"><i class="fas fa-arrow-left"
 									></i></a>
 						</p>
 					</div>
 					<div class="col-10 pl-0">
-						<h3 class="text-warning page-title mt-3">ORDER DETAIL</h3>
+						<h3 class="primary-color page-title mt-3">ORDER DETAIL</h3>
 					</div>
 				</div>
 
@@ -364,7 +364,7 @@
 			</div>
 		</nav>
 		<div id="order-btn" onclick="addOrder()">
-			<button class="btn btn-warning btn-block">ORDER</button>
+			<button class="btn btn-success btn-block">ORDER</button>
 		</div>
 
 
