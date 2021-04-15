@@ -264,6 +264,11 @@ h3.page-title {
   position: absolute;
   bottom: 15px;
 }
+
+.btn-success {
+  background-color: var(--primary-bg);
+  border-color: var(--primary-bg);
+}
 .btn-back {
   font-size: 1.75rem;
   padding: 10px;
