@@ -64,16 +64,26 @@
 //     foto: "ChickenNuggets.png",
 //   },
 // ];
-// ///////////////////
+
+// ! API
 const menusList = document.getElementById("menusList");
 const searchBar = document.getElementById("searchBar");
-let menu = [];
+let allmenu = [];
+
+searchBar.addEventListener("keyup", (e) => {
+  const searchString = e.target.value.toLowerCase();
+
+  const filteredMenus = allmenu.filter((menu) => {
+    return menu.nama.toLowerCase().includes(searchString);
+  });
+  displayMenus(filteredMenus);
+});
 
 const loadMenus = async () => {
   try {
     const res = await fetch("http://foodmenu-api.herokuapp.com/api/menu");
-    menu = await res.json();
-    displayMenus(menu);
+    allmenu = await res.json();
+    displayMenus(allmenu);
   } catch (err) {
     console.error(err);
   }
@@ -97,6 +107,9 @@ const displayMenus = (menus) => {
 
 loadMenus();
 
+// !
+
+// autocomplete
 function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,
   the text field element and an array of possible autocompleted values:*/
@@ -215,6 +228,7 @@ var countries = [
 /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
 autocomplete(document.getElementById("myInput"), countries);
 
+//
 localStorage.clear();
 let user = {};
 
@@ -224,8 +238,8 @@ function loadData() {
 }
 
 function initialLoad() {
-  if (!localStorage.menu) {
-    localStorage.setItem("menu", JSON.stringify(menu));
+  if (!localStorage.allmenu) {
+    localStorage.setItem("allmenu", JSON.stringify(allmenu));
   }
   loadProfile();
   setTimeout(function () {
@@ -243,7 +257,7 @@ $(document).ready(function () {
 });
 
 function loadMenu() {
-  var data_menu = JSON.parse(localStorage.getItem("menu"));
+  var data_menu = JSON.parse(localStorage.getItem("allmenu"));
   var data_food = "";
   var data_drink = "";
   var data_snack = "";
@@ -254,7 +268,7 @@ function loadMenu() {
       `)">
 		<div class="d-flex justify-content-start align-items-center">
 			<div class="col-sm-4">
-				<img src="img/menu/` +
+				<img src="` +
       data_menu[i].foto +
       `" style="width: 120px; background-color: #d4f2d0;" class="card-img img-fluid" alt="card image">
 				
@@ -301,7 +315,7 @@ function loadCart() {
       var nominal = cart[i].jumlah * cart[i].harga;
       data_cart +=
         `<div class="col-12 text-center">
-			<img src="img/menu/` +
+			<img src="` +
         cart[i].foto +
         `" style="width: 80%;" class="card-img img-fluid pt-2" alt="card image">
 		</div>
@@ -494,7 +508,7 @@ function addToCart(id_menu) {
   }
 
   // penambahan cart
-  var data_menu = JSON.parse(localStorage.getItem("menu"));
+  var data_menu = JSON.parse(localStorage.getItem("allmenu"));
   var cart_item = "";
   for (i in data_menu) {
     if (data_menu[i].id == id_menu) {
