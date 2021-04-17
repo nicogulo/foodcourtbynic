@@ -89,21 +89,21 @@ const loadMenus = async () => {
   }
 };
 
-const displayMenus = (menus) => {
-  const htmlString = menus
-    .map((menu) => {
-      return `
-          <div class="character">
-          <img src="${menu.foto}"></img>
-              <h2>${menu.nama}</h2>
-              <p> ${menu.harga}</p>
-              <p> ${menu.detail}</p>
-          </div>
-      `;
-    })
-    .join("");
-  menusList.innerHTML = htmlString;
-};
+// const displayMenus = (menus) => {
+//   const htmlString = menus
+//     .map((menu) => {
+//       return `
+//           <div class="character">
+//           <img src="${menu.foto}"></img>
+//               <h2>${menu.nama}</h2>
+//               <p> ${menu.harga}</p>
+//               <p> ${menu.detail}</p>
+//           </div>
+//       `;
+//     })
+//     .join("");
+//   menusList.innerHTML = htmlString;
+// };
 
 loadMenus();
 
@@ -415,7 +415,7 @@ function loadOrder() {
 								<div class="card-body">
 									<div class="row">
 										<div class="col-3">
-											<img src="img/menu/` +
+											<img src="` +
         order[i].menu[0].foto +
         `" class="img-fluid">
 										</div>
@@ -679,13 +679,6 @@ function showOrder(id) {
     }
   }
 
-  // add zero at minutes
-  function addZero(i) {
-    if (i < 10) {
-      i = "0" + i;
-    }
-    return i;
-  }
   var datetime = new Date(order_item.tanggal);
   var date =
     datetime.getDate() +
@@ -693,7 +686,7 @@ function showOrder(id) {
     numToMonth(datetime.getMonth()) +
     " " +
     datetime.getFullYear();
-  var time = datetime.getHours() + ":" + addZero.getMinutes();
+  var time = datetime.getHours() + ":" + datetime.getMinutes();
   $("#tanggal-detail-order").html(date);
   $("#jam-detail-order").html(time);
 
@@ -735,7 +728,6 @@ function showOrder(id) {
   var total_bayar = total_order_detail + ppn;
   $("#total-bayar-order-detail").html(formatRupiah(total_bayar));
 }
-
 function clearTransaction() {
   localStorage.removeItem("cart");
   localStorage.removeItem("order");

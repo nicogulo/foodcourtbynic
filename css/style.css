@@ -29,7 +29,7 @@ a:hover {
 }
 .primary-color {
   color: var(--primary-bg);
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .preloader {
@@ -262,7 +262,9 @@ h3.page-title {
   position: absolute;
   bottom: 15px;
 }
-
+#tanggal-detail-order {
+  text-align: left;
+}
 .btn-success {
   background-color: var(--primary-bg);
   border-color: var(--primary-bg);
