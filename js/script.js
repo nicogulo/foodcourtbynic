@@ -1,69 +1,101 @@
-let menu = [
-  {
-    id: 1,
-    nama: "Bacon Burger",
-    detail: "Cita rasa yang sangat dalam terdapat di Pink Donuts ini.",
-    kategori: "food",
-    harga: 27272,
-    foto: "BaconKingJr.png",
-  },
-  {
-    id: 2,
-    nama: "Burger Keju",
-    detail: "Cita rasa yang sangat dalam terdapat di Pink Donuts ini.",
-    kategori: "food",
-    harga: 36363,
-    foto: "DoubleCheeseburger.png",
-  },
-  {
-    id: 3,
-    nama: "Krabby Patty",
-    detail: "Cita rasa yang sangat dalam terdapat di Pink Donuts ini.",
-    kategori: "food",
-    harga: 45454,
-    foto: "MorningStarVeggieBurger.png",
-  },
-  {
-    id: 4,
-    nama: "White Water",
-    detail: "Cita rasa yang sangat dalam terdapat di Pink Donuts ini.",
-    kategori: "drink",
-    harga: 3636,
-    foto: "NestlePureLifeWater.png",
-  },
-  {
-    id: 5,
-    nama: "Cola",
-    detail: "Cita rasa yang sangat dalam terdapat di Pink Donuts ini.",
-    kategori: "drink",
-    harga: 5454,
-    foto: "CocaCola.png",
-  },
-  {
-    id: 6,
-    nama: "Sprite",
-    detail: "Cita rasa yang sangat dalam terdapat di Pink Donuts ini.",
-    kategori: "drink",
-    harga: 5454,
-    foto: "Sprite.png",
-  },
-  {
-    id: 7,
-    nama: "Pancakes",
-    detail: "Cita rasa yang sangat dalam terdapat di Pink Donuts ini.",
-    kategori: "snack",
-    harga: 9090,
-    foto: "PancakesandSausages.png",
-  },
-  {
-    id: 8,
-    nama: "Chicken Nugget",
-    detail: "Cita rasa yang sangat dalam terdapat di Pink Donuts ini.",
-    kategori: "snack",
-    harga: 9090,
-    foto: "ChickenNuggets.png",
-  },
-];
+// let menu = [
+//   {
+//     id: 1,
+//     nama: "Bacon Burger",
+//     detail: "Cita rasa yang sangat dalam terdapat di Pink Donuts ini.",
+//     kategori: "food",
+//     harga: 27272,
+//     foto: "BaconKingJr.png",
+//   },
+//   {
+//     id: 2,
+//     nama: "Burger Keju",
+//     detail: "Cita rasa yang sangat dalam terdapat di Pink Donuts ini.",
+//     kategori: "food",
+//     harga: 36363,
+//     foto: "DoubleCheeseburger.png",
+//   },
+//   {
+//     id: 3,
+//     nama: "Krabby Patty",
+//     detail: "Cita rasa yang sangat dalam terdapat di Pink Donuts ini.",
+//     kategori: "food",
+//     harga: 45454,
+//     foto: "MorningStarVeggieBurger.png",
+//   },
+//   {
+//     id: 4,
+//     nama: "White Water",
+//     detail: "Cita rasa yang sangat dalam terdapat di Pink Donuts ini.",
+//     kategori: "drink",
+//     harga: 3636,
+//     foto: "NestlePureLifeWater.png",
+//   },
+//   {
+//     id: 5,
+//     nama: "Cola",
+//     detail: "Cita rasa yang sangat dalam terdapat di Pink Donuts ini.",
+//     kategori: "drink",
+//     harga: 5454,
+//     foto: "CocaCola.png",
+//   },
+//   {
+//     id: 6,
+//     nama: "Sprite",
+//     detail: "Cita rasa yang sangat dalam terdapat di Pink Donuts ini.",
+//     kategori: "drink",
+//     harga: 5454,
+//     foto: "Sprite.png",
+//   },
+//   {
+//     id: 7,
+//     nama: "Pancakes",
+//     detail: "Cita rasa yang sangat dalam terdapat di Pink Donuts ini.",
+//     kategori: "snack",
+//     harga: 9090,
+//     foto: "PancakesandSausages.png",
+//   },
+//   {
+//     id: 8,
+//     nama: "Chicken Nugget",
+//     detail: "Cita rasa yang sangat dalam terdapat di Pink Donuts ini.",
+//     kategori: "snack",
+//     harga: 9090,
+//     foto: "ChickenNuggets.png",
+//   },
+// ];
+// ///////////////////
+const menusList = document.getElementById("menusList");
+const searchBar = document.getElementById("searchBar");
+let menu = [];
+
+const loadMenus = async () => {
+  try {
+    const res = await fetch("http://foodmenu-api.herokuapp.com/api/menu");
+    menu = await res.json();
+    displayMenus(menu);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const displayMenus = (menus) => {
+  const htmlString = menus
+    .map((menu) => {
+      return `
+          <div class="character">
+          <img src="${menu.foto}"></img>
+              <h2>${menu.nama}</h2>
+              <p> ${menu.harga}</p>
+              <p> ${menu.detail}</p>
+          </div>
+      `;
+    })
+    .join("");
+  menusList.innerHTML = htmlString;
+};
+
+loadMenus();
 
 function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,
