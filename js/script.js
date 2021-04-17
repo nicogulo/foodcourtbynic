@@ -66,9 +66,9 @@
 // ];
 
 // ! API
+let allmenu = [];
 const menusList = document.getElementById("menusList");
 const searchBar = document.getElementById("searchBar");
-let allmenu = [];
 
 searchBar.addEventListener("keyup", (e) => {
   const searchString = e.target.value.toLowerCase();
@@ -102,7 +102,7 @@ const loadMenus = async () => {
 //       `;
 //     })
 //     .join("");
-//   menusList.innerHTML = htmlString;
+//   all.innerHTML = htmlString;
 // };
 
 loadMenus();
@@ -266,24 +266,24 @@ function loadMenu() {
       `	<div class="card border-success mb-3 col-11 mx-auto rounded my-2 p-3" onClick="addToCart(` +
       data_menu[i].id +
       `)">
-		<div class="d-flex justify-content-start align-items-center">
-			<div class="col-sm-4">
-				<img src="` +
+      <div class="d-flex justify-content-start align-items-center">
+        <div class="col-sm-4">
+          <img src="` +
       data_menu[i].foto +
       `" style="width: 120px; background-color: #d4f2d0;" class="card-img img-fluid" alt="card image">
-				
-			</div>
-		<div class="col-sm-8">
-				<p class="menu-name primary-color">` +
+          
+        </div>
+      <div class="col-sm-8">
+          <p class="menu-name primary-color">` +
       data_menu[i].nama +
       `</p>
-				<p class="detail">` +
+          <p class="detail">` +
       data_menu[i].detail +
       `</p>
-				<span class="menu-price">Rp. ` +
+          <span class="menu-price">Rp. ` +
       formatRupiah(data_menu[i].harga) +
       `</span>
-			
+        
 				<a class="btn btn-success float-right btn-tambah">
 				<i class="fas fa-plus"></i>
 				</a>
