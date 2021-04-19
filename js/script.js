@@ -83,7 +83,6 @@ const loadMenus = async () => {
   try {
     const res = await fetch("http://foodmenu-api.herokuapp.com/api/menu");
     allmenu = await res.json();
-    displayMenus(allmenu);
   } catch (err) {
     console.error(err);
   }
@@ -106,7 +105,6 @@ const loadMenus = async () => {
 // };
 
 loadMenus();
-
 // !
 
 // autocomplete
@@ -261,17 +259,25 @@ function loadMenu() {
   var data_food = "";
   var data_drink = "";
   var data_snack = "";
+
   for (i in data_menu) {
     var menu_item =
       `	<div class="card border-success mb-3 col-11 mx-auto rounded my-2 p-3" onClick="addToCart(` +
       data_menu[i].id +
       `)">
       <div class="d-flex justify-content-start align-items-center">
-        <div class="col-sm-4">
+        <div class="col-sm-4 text-center">
           <img src="` +
       data_menu[i].foto +
       `" style="width: 120px; background-color: #d4f2d0;" class="card-img img-fluid" alt="card image">
-          
+
+      
+      <span>Rate ` +
+      data_menu[i].rate +
+      ` / 5</span>
+
+
+      
         </div>
       <div class="col-sm-8">
           <p class="menu-name primary-color">` +
