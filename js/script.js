@@ -179,6 +179,7 @@ function autocomplete(inp, arr) {
       }
     }
   });
+
   function addActive(x) {
     /*a function to classify an item as "active":*/
     if (!x) return false;
@@ -189,12 +190,14 @@ function autocomplete(inp, arr) {
     /*add class "autocomplete-active":*/
     x[currentFocus].classList.add("autocomplete-active");
   }
+
   function removeActive(x) {
     /*a function to remove the "active" class from all autocomplete items:*/
     for (var i = 0; i < x.length; i++) {
       x[i].classList.remove("autocomplete-active");
     }
   }
+
   function closeAllLists(elmnt) {
     /*close all autocomplete lists in the document,
     except the one passed as an argument:*/
@@ -265,37 +268,32 @@ function loadMenu() {
       `	<div class="card border-success mb-3 col-11 mx-auto rounded my-2 p-3" onClick="addToCart(` +
       data_menu[i].id +
       `)">
-      <div class="d-flex justify-content-start align-items-center">
-        <div class="col-sm-4 text-center">
-          <img src="` +
+         <div class="d-flex justify-content-start align-items-center">
+          <div class="col-sm-4 text-center">
+           <img src="` +
       data_menu[i].foto +
-      `" style="width: 120px; background-color: #d4f2d0;" class="card-img img-fluid" alt="card image">
-
-      
-      <span>Rate ` +
+      `" style="width: 120px; background-color: #d4f2d0; margin-bottom:10px" class="card-img img-fluid" alt="card image">
+             <span>Rate ` +
       data_menu[i].rate +
       ` / 5</span>
 
-
-      
-        </div>
-      <div class="col-sm-8">
-          <p class="menu-name primary-color">` +
+          </div>
+            <div class="col-sm-8">
+                <p class="menu-name primary-color">` +
       data_menu[i].nama +
       `</p>
-          <p class="detail">` +
+                <p class="detail">` +
       data_menu[i].detail +
       `</p>
-          <span class="menu-price">Rp. ` +
+                <span class="menu-price">Rp. ` +
       formatRupiah(data_menu[i].harga) +
-      `</span>
-        
-				<a class="btn btn-success float-right btn-tambah">
-				<i class="fas fa-plus"></i>
-				</a>
-		</div>
-	</div>
-</div>`;
+      `</span>   
+                <a class="btn btn-success float-right btn-tambah">
+                <i class="fas fa-plus"></i>
+                </a>
+            </div>
+          </div>
+        </div>`;
     if (data_menu[i].kategori == "food") {
       data_food += menu_item;
     } else if (data_menu[i].kategori == "drink") {
@@ -734,6 +732,7 @@ function showOrder(id) {
   var total_bayar = total_order_detail + ppn;
   $("#total-bayar-order-detail").html(formatRupiah(total_bayar));
 }
+
 function clearTransaction() {
   localStorage.removeItem("cart");
   localStorage.removeItem("order");
