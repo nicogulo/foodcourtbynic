@@ -81,7 +81,7 @@ searchBar.addEventListener("keyup", (e) => {
 
 const loadMenus = async () => {
   try {
-    const res = await fetch("http://foodmenu-api.herokuapp.com/api/menu");
+    const res = await fetch("https://foodmenu-api.herokuapp.com/api/menu");
     allmenu = await res.json();
   } catch (err) {
     console.error(err);
