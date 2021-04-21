@@ -621,7 +621,7 @@ function addOrder() {
     setPage("order");
 
     // message
-    // Jhonarendra membuat pesanan baru! Burger 2, Pancake 3, Sprite 4 dengan total pesanan Rp 200.000
+    // Nic membuat pesanan baru! Burger 2, Pancake 3, Sprite 4 dengan total pesanan Rp 200.000
     var msg_order = "";
     if (liff.isLoggedIn()) {
       msg_order += user.displayName + " membuat pesanan baru! ";
