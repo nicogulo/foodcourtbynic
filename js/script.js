@@ -230,7 +230,7 @@ var countries = [
 autocomplete(document.getElementById("myInput"), countries);
 
 //
-// localStorage.clear();
+localStorage.clear();
 let user = {};
 
 function loadData() {
