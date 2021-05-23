@@ -31,6 +31,15 @@ a:hover {
   color: var(--primary-bg);
   cursor: pointer;
 }
+#app {
+  background: var(--secondary-bg);
+  position: relative;
+  width: 425px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
 
 .preloader {
   position: fixed;
@@ -154,12 +163,12 @@ input {
   font-size: 16px;
 }
 
-input[type="text"] {
+input[type='text'] {
   background-color: #f1f1f1;
   width: 100%;
 }
 
-input[type="submit"] {
+input[type='submit'] {
   background-color: DodgerBlue;
   color: #fff;
   cursor: pointer;
@@ -224,32 +233,23 @@ input[type="submit"] {
 }
 
 .stars-outer::before {
-  content: "\f005 \f005 \f005 \f005 \f005";
-  font-family: "Font Awesome 5 Free";
+  content: '\f005 \f005 \f005 \f005 \f005';
+  font-family: 'Font Awesome 5 Free';
   font-weight: 900;
   color: #ccc;
 }
 
 .stars-inner::before {
-  content: "\f005 \f005 \f005 \f005 \f005";
-  font-family: "Font Awesome 5 Free";
+  content: '\f005 \f005 \f005 \f005 \f005';
+  font-family: 'Font Awesome 5 Free';
   font-weight: 900;
   color: #f8ce0b;
 }
 
 /*  */
 
-#app {
-  background: var(--secondary-bg);
-  position: relative;
-  width: 480px;
-  margin: 0 auto;
-  overflow-x: hidden;
-  min-height: 100vh;
-  padding-bottom: 60px;
-}
 .navbar {
-  width: 480px;
+  width: 425px;
   position: fixed;
   bottom: 0;
   display: block;
