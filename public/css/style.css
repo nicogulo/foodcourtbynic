@@ -247,14 +247,14 @@ input[type='submit'] {
   color: #f8ce0b;
 }
 
-/*  */
+/* Navbar */
 
 .navbar {
   width: 425px;
   position: fixed;
   bottom: 0;
   display: block;
-  background-color: var(--primary-bg);
+  background-color: var(--secondary-bg);
 }
 .nav-home {
   padding: 15px 20px;
