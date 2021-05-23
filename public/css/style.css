@@ -4,6 +4,7 @@
   --third-bg: #e5e5e5;
   --font-pm: #929292;
   --font-title: #666666;
+  --shadow: rgba(176, 176, 176, 0.3);
 }
 
 html {
@@ -207,8 +208,8 @@ input[type='submit'] {
 }
 
 .slider {
-  margin: auto;
-  width: 90%;
+  margin: 80px auto;
+  width: 93%;
   height: 150px;
   border-radius: 8px;
 }
@@ -262,6 +263,13 @@ h3.page-title {
   font-weight: bold;
   padding: 15px 10px;
 }
+.menu {
+  border-radius: 15px;
+  box-shadow: 0px 6px 15px var(--shadow);
+}
+.menu img {
+  border-radius: 15px;
+}
 .menu-wrapper {
   margin: 10px;
 }
@@ -278,6 +286,7 @@ h3.page-title {
 }
 
 .menu-list {
+  margin: 80px auto;
   padding-bottom: 100px;
 }
 .menu.card .card-body {
