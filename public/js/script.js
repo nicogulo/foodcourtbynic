@@ -14,7 +14,7 @@ let allmenu = [];
 
 const loadMenus = async () => {
   try {
-    const res = await fetch("https://foodmenu-api.herokuapp.com/api/menu");
+    const res = await fetch('https://foodmenu-api.herokuapp.com/api/menu');
     allmenu = await res.json();
   } catch (err) {
     console.error(err);
@@ -40,73 +40,73 @@ const loadMenus = async () => {
 loadMenus();
 // !
 function setPage(menu) {
-  if (menu == "home") {
+  if (menu == 'home') {
     loadCart();
-    $("#home").show();
-    $("#menu").hide();
-    $("#order").hide();
-    $("#account").hide();
-    $("#cart").hide();
-    $("#order-detail").hide();
+    $('#home').show();
+    $('#menu').hide();
+    $('#order').hide();
+    $('#account').hide();
+    $('#cart').hide();
+    $('#order-detail').hide();
 
-    $("#nav").show();
-    $("#order-btn").hide();
-  } else if (menu == "menu") {
+    $('#nav').show();
+    $('#order-btn').hide();
+  } else if (menu == 'menu') {
     loadMenu();
     loadCart();
-    $("#home").hide();
-    $("#menu").show();
-    $("#order").hide();
-    $("#account").hide();
-    $("#cart").hide();
-    $("#order-detail").hide();
+    $('#home').hide();
+    $('#menu').show();
+    $('#order').hide();
+    $('#account').hide();
+    $('#cart').hide();
+    $('#order-detail').hide();
 
-    $("#nav").show();
-    $("#order-btn").hide();
-  } else if (menu == "order") {
+    $('#nav').show();
+    $('#order-btn').hide();
+  } else if (menu == 'order') {
     loadOrder();
-    $("#home").hide();
-    $("#menu").hide();
-    $("#order").show();
-    $("#account").hide();
-    $("#cart").hide();
-    $("#order-detail").hide();
+    $('#home').hide();
+    $('#menu').hide();
+    $('#order').show();
+    $('#account').hide();
+    $('#cart').hide();
+    $('#order-detail').hide();
 
-    $("#nav").show();
-    $("#order-btn").hide();
-  } else if (menu == "account") {
+    $('#nav').show();
+    $('#order-btn').hide();
+  } else if (menu == 'account') {
     loadProfile();
-    $("#home").hide();
-    $("#menu").hide();
-    $("#order").hide();
-    $("#account").show();
-    $("#cart").hide();
-    $("#order-detail").hide();
+    $('#home').hide();
+    $('#menu').hide();
+    $('#order').hide();
+    $('#account').show();
+    $('#cart').hide();
+    $('#order-detail').hide();
 
-    $("#nav").show();
-    $("#order-btn").hide();
-  } else if (menu == "cart") {
+    $('#nav').show();
+    $('#order-btn').hide();
+  } else if (menu == 'cart') {
     loadCart();
-    $("#home").hide();
-    $("#menu").hide();
-    $("#order").hide();
-    $("#account").hide();
-    $("#cart").show();
-    $("#order-detail").hide();
+    $('#home').hide();
+    $('#menu').hide();
+    $('#order').hide();
+    $('#account').hide();
+    $('#cart').show();
+    $('#order-detail').hide();
 
-    $("#nav").hide();
-    $("#order-btn").show();
-  } else if (menu == "order-detail") {
+    $('#nav').hide();
+    $('#order-btn').show();
+  } else if (menu == 'order-detail') {
     loadCart();
-    $("#home").hide();
-    $("#menu").hide();
-    $("#order").hide();
-    $("#account").hide();
-    $("#cart").hide();
-    $("#order-detail").show();
+    $('#home').hide();
+    $('#menu').hide();
+    $('#order').hide();
+    $('#account').hide();
+    $('#cart').hide();
+    $('#order-detail').show();
 
-    $("#nav").hide();
-    $("#order-btn").hide();
+    $('#nav').hide();
+    $('#order-btn').hide();
   }
 }
 
@@ -236,21 +236,21 @@ function setPage(menu) {
 let user = {};
 
 function loadData() {
-  setPage("home");
+  setPage('home');
   initialLoad();
 }
 
 function initialLoad() {
   if (!localStorage.allmenu) {
-    localStorage.setItem("allmenu", JSON.stringify(allmenu));
+    localStorage.setItem('allmenu', JSON.stringify(allmenu));
   }
   loadProfile();
   setTimeout(function () {
-    $(".preloader").hide();
+    $('.preloader').hide();
   }, 1000);
 }
 $(document).ready(function () {
-  $(".slider").slick({
+  $('.slider').slick({
     dots: true,
     autoplay: true,
     autoplaySpeed: 2500,
@@ -260,14 +260,14 @@ $(document).ready(function () {
 });
 
 function loadMenu() {
-  var data_menu = JSON.parse(localStorage.getItem("allmenu"));
-  var data_food = "";
-  var data_drink = "";
-  var data_snack = "";
+  var data_menu = JSON.parse(localStorage.getItem('allmenu'));
+  var data_food = '';
+  var data_drink = '';
+  var data_snack = '';
 
   for (i in data_menu) {
     var menu_item =
-      `	<div class="card border-success mb-3 col-11 mx-auto rounded my-2 p-3" onClick="addToCart(` +
+      `	<div class="card  mb-3 col-11 mx-auto rounded my-2 p-3" style="border-color: #88b06a;" onClick="addToCart(` +
       data_menu[i].id +
       `)">
          <div class="d-flex justify-content-start align-items-center">
@@ -296,27 +296,27 @@ function loadMenu() {
             </div>
           </div>
         </div>`;
-    if (data_menu[i].kategori == "food") {
+    if (data_menu[i].kategori == 'food') {
       data_food += menu_item;
-    } else if (data_menu[i].kategori == "drink") {
+    } else if (data_menu[i].kategori == 'drink') {
       data_drink += menu_item;
-    } else if (data_menu[i].kategori == "snack") {
+    } else if (data_menu[i].kategori == 'snack') {
       data_snack += menu_item;
     }
   }
-  $("#food-menu").html(data_food);
-  $("#drink-menu").html(data_drink);
-  $("#snack-menu").html(data_snack);
+  $('#food-menu').html(data_food);
+  $('#drink-menu').html(data_drink);
+  $('#snack-menu').html(data_snack);
 }
 
 function loadCart() {
   // cart page data
   var cart = [];
-  var data_cart = "";
+  var data_cart = '';
   var total_cart = 0;
   if (localStorage.cart) {
-    cart = JSON.parse(localStorage.getItem("cart"));
-    $("#cart-info").show();
+    cart = JSON.parse(localStorage.getItem('cart'));
+    $('#cart-info').show();
     for (i in cart) {
       var nominal = cart[i].jumlah * cart[i].harga;
       data_cart +=
@@ -359,39 +359,39 @@ function loadCart() {
 		</div>`;
       total_cart = total_cart + nominal;
 
-      $("#cart-content").html(data_cart);
-      $("#total-cart").html(formatRupiah(total_cart));
+      $('#cart-content').html(data_cart);
+      $('#total-cart').html(formatRupiah(total_cart));
 
       var ppn = (total_cart * 10) / 100;
       ppn = parseInt(ppn);
-      $("#ppn").html(formatRupiah(ppn));
+      $('#ppn').html(formatRupiah(ppn));
 
       var total_bayar = total_cart + ppn;
-      $("#total-bayar").html(formatRupiah(total_bayar));
+      $('#total-bayar').html(formatRupiah(total_bayar));
     }
   } else {
-    $("#cart-info").hide();
+    $('#cart-info').hide();
     data_cart += `<div class="alert alert-success">Keranjang anda masih kosong.</div>`;
-    $("#cart-content").html(data_cart);
+    $('#cart-content').html(data_cart);
   }
 
   // cart icon in home
   if (!localStorage.cart) {
-    $("#cart_num").hide();
-    $("#cart_num_menu").hide();
+    $('#cart_num').hide();
+    $('#cart_num_menu').hide();
   } else {
-    $("#cart_num").show();
-    $("#cart_num_menu").show();
-    $("#cart_num").html(cart.length);
-    $("#cart_num_menu").html(cart.length);
+    $('#cart_num').show();
+    $('#cart_num_menu').show();
+    $('#cart_num').html(cart.length);
+    $('#cart_num_menu').html(cart.length);
   }
 }
 
 function loadOrder() {
   var order = [];
-  var data_order = "";
+  var data_order = '';
   if (localStorage.order) {
-    order = JSON.parse(localStorage.getItem("order"));
+    order = JSON.parse(localStorage.getItem('order'));
     for (i in order) {
       // hitung total dahulu
       var total_pesanan = 0;
@@ -405,13 +405,13 @@ function loadOrder() {
       var date = new Date(order[i].tanggal);
       date =
         date.getDate() +
-        " " +
+        ' ' +
         numToMonth(date.getMonth()) +
-        " " +
+        ' ' +
         date.getFullYear() +
-        " pukul " +
+        ' pukul ' +
         date.getHours() +
-        ":" +
+        ':' +
         date.getMinutes();
       data_order +=
         `<div class="order-item my-2" onClick="showOrder(` +
@@ -462,50 +462,50 @@ function loadOrder() {
   } else {
     data_order += `<div class="alert alert-success m-3">Belum ada pesanan dari anda</div>`;
   }
-  $("#order-content").html(data_order);
+  $('#order-content').html(data_order);
 }
 
 function loadProfile() {
   if (liff.isLoggedIn()) {
-    $("#profile-wrapper").show();
-    $("#not-login").hide();
+    $('#profile-wrapper').show();
+    $('#not-login').hide();
     liff
       .getProfile()
       .then(function (profile) {
         user = profile;
-        $("#profile-user-id").html(profile.userId);
-        $("#profile-display-name").html(profile.displayName);
-        $("#profile-photo img").attr("src", profile.pictureUrl);
-        $("#profile-status-msg").html(profile.statusMessage);
+        $('#profile-user-id').html(profile.userId);
+        $('#profile-display-name').html(profile.displayName);
+        $('#profile-photo img').attr('src', profile.pictureUrl);
+        $('#profile-status-msg').html(profile.statusMessage);
 
-        $("#profile-os").html(liff.getOS());
+        $('#profile-os').html(liff.getOS());
         if (liff.isInClient()) {
-          $("#profile-line-v").html(liff.getLineVersion());
+          $('#profile-line-v').html(liff.getLineVersion());
         } else {
-          $("#profile-line-v").html(
-            "<small><i>Tidak terbuka di LINE</i></small>"
+          $('#profile-line-v').html(
+            '<small><i>Tidak terbuka di LINE</i></small>'
           );
         }
       })
       .catch(function (error) {
-        $("#modal-message").html("Error: " + error);
-        $("#modalAlert").modal("show");
+        $('#modal-message').html('Error: ' + error);
+        $('#modalAlert').modal('show');
       });
   } else {
-    $("#profile-wrapper").hide();
-    $("#not-login").show();
+    $('#profile-wrapper').hide();
+    $('#not-login').show();
   }
 }
 
 function addToCart(id_menu) {
   // cek cart
-  var cart = "";
+  var cart = '';
   if (localStorage.cart) {
-    cart = JSON.parse(localStorage.getItem("cart"));
+    cart = JSON.parse(localStorage.getItem('cart'));
     for (i in cart) {
       if (cart[i].id == id_menu) {
-        $("#modal-message").html("Menu sudah ada dalam keranjang");
-        $("#modalAlert").modal("show");
+        $('#modal-message').html('Menu sudah ada dalam keranjang');
+        $('#modalAlert').modal('show');
         return false;
       }
     }
@@ -514,8 +514,8 @@ function addToCart(id_menu) {
   }
 
   // penambahan cart
-  var data_menu = JSON.parse(localStorage.getItem("allmenu"));
-  var cart_item = "";
+  var data_menu = JSON.parse(localStorage.getItem('allmenu'));
+  var cart_item = '';
   for (i in data_menu) {
     if (data_menu[i].id == id_menu) {
       cart_item = {
@@ -529,12 +529,12 @@ function addToCart(id_menu) {
     }
   }
   cart.push(cart_item);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  setPage("cart");
+  localStorage.setItem('cart', JSON.stringify(cart));
+  setPage('cart');
 }
 
 function deleteCart(id_menu) {
-  var cart = JSON.parse(localStorage.getItem("cart"));
+  var cart = JSON.parse(localStorage.getItem('cart'));
   var index = 0;
   for (i in cart) {
     if (cart[i].id == id_menu) {
@@ -542,16 +542,16 @@ function deleteCart(id_menu) {
     }
     index++;
   }
-  localStorage.setItem("cart", JSON.stringify(cart));
+  localStorage.setItem('cart', JSON.stringify(cart));
   if (cart.length == 0) {
-    localStorage.removeItem("cart");
+    localStorage.removeItem('cart');
   }
   loadCart();
 }
 
 function addNumCart(id_menu) {
-  var cart = JSON.parse(localStorage.getItem("cart"));
-  var cart_item = "";
+  var cart = JSON.parse(localStorage.getItem('cart'));
+  var cart_item = '';
   var index = 0;
   for (i in cart) {
     if (cart[i].id == id_menu) {
@@ -568,13 +568,13 @@ function addNumCart(id_menu) {
     index++;
   }
   cart.push(cart_item);
-  localStorage.setItem("cart", JSON.stringify(cart));
+  localStorage.setItem('cart', JSON.stringify(cart));
   loadCart();
 }
 
 function minNumCart(id_menu) {
-  var cart = JSON.parse(localStorage.getItem("cart"));
-  var cart_item = "";
+  var cart = JSON.parse(localStorage.getItem('cart'));
+  var cart_item = '';
   var index = 0;
   for (i in cart) {
     if (cart[i].id == id_menu) {
@@ -591,7 +591,7 @@ function minNumCart(id_menu) {
     index++;
   }
   cart.push(cart_item);
-  localStorage.setItem("cart", JSON.stringify(cart));
+  localStorage.setItem('cart', JSON.stringify(cart));
 
   // kalau 0 hapus dari list
   if (cart_item.jumlah == 0) {
@@ -603,12 +603,12 @@ function minNumCart(id_menu) {
 function addOrder() {
   // ambil semua item dari cart, push ke local storage order, kosongkan cart
   if (localStorage.cart) {
-    var cart = JSON.parse(localStorage.getItem("cart"));
+    var cart = JSON.parse(localStorage.getItem('cart'));
     var order = [];
     var order_item = {};
     var index = 0;
     if (localStorage.order) {
-      order = JSON.parse(localStorage.getItem("order"));
+      order = JSON.parse(localStorage.getItem('order'));
       index = order.length;
     }
     var timestamp = new Date();
@@ -618,17 +618,17 @@ function addOrder() {
       menu: cart,
     };
     order.push(order_item);
-    localStorage.setItem("order", JSON.stringify(order));
-    localStorage.removeItem("cart");
-    setPage("order");
+    localStorage.setItem('order', JSON.stringify(order));
+    localStorage.removeItem('cart');
+    setPage('order');
 
     // message
     // Nic membuat pesanan baru! Burger 2, Pancake 3, Sprite 4 dengan total pesanan Rp 200.000
-    var msg_order = "";
+    var msg_order = '';
     if (liff.isLoggedIn()) {
-      msg_order += user.displayName + " membuat pesanan baru! ";
+      msg_order += user.displayName + ' membuat pesanan baru! ';
     } else {
-      msg_order += "Anda membuat pesanan baru! ";
+      msg_order += 'Anda membuat pesanan baru! ';
     }
 
     var total_pesanan = 0;
@@ -636,48 +636,48 @@ function addOrder() {
       var nominal = cart[i].jumlah * cart[i].harga;
       total_pesanan = total_pesanan + nominal;
 
-      msg_order += cart[i].nama + " (" + cart[i].jumlah + ")";
+      msg_order += cart[i].nama + ' (' + cart[i].jumlah + ')';
       if (i == cart.length - 2) {
         // mengatasi koma komaan
-        msg_order += " dan ";
+        msg_order += ' dan ';
       } else if (i == cart.length - 1) {
-        msg_order += "";
+        msg_order += '';
       } else {
-        msg_order += ", ";
+        msg_order += ', ';
       }
     }
     var ppn = parseInt((total_pesanan * 10) / 100);
     var total_bayar = total_pesanan + ppn;
     msg_order +=
-      " dengan total pesanan Rp " +
+      ' dengan total pesanan Rp ' +
       formatRupiah(total_bayar) +
-      ". Terima kasih banyak!";
+      '. Terima kasih banyak!';
 
     if (!liff.isInClient()) {
-      $("#modal-message").html(msg_order);
-      $("#modalAlert").modal("show");
+      $('#modal-message').html(msg_order);
+      $('#modalAlert').modal('show');
     } else {
       liff
         .sendMessages([
           {
-            type: "text",
+            type: 'text',
             text: msg_order,
           },
         ])
         .catch(function (error) {
-          $("#modal-message").html("Error sending message: " + error);
-          $("#modalAlert").modal("show");
+          $('#modal-message').html('Error sending message: ' + error);
+          $('#modalAlert').modal('show');
         });
     }
   } else {
-    $("#modal-message").html("Anda belum memilih menu");
-    $("#modalAlert").modal("show");
+    $('#modal-message').html('Anda belum memilih menu');
+    $('#modalAlert').modal('show');
   }
 }
 
 function showOrder(id) {
-  setPage("order-detail");
-  var order = JSON.parse(localStorage.getItem("order"));
+  setPage('order-detail');
+  var order = JSON.parse(localStorage.getItem('order'));
   var order_item = [];
   for (i in order) {
     if (order[i].id == id) {
@@ -688,15 +688,15 @@ function showOrder(id) {
   var datetime = new Date(order_item.tanggal);
   var date =
     datetime.getDate() +
-    " " +
+    ' ' +
     numToMonth(datetime.getMonth()) +
-    " " +
+    ' ' +
     datetime.getFullYear();
-  var time = datetime.getHours() + ":" + datetime.getMinutes();
-  $("#tanggal-detail-order").html(date);
-  $("#jam-detail-order").html(time);
+  var time = datetime.getHours() + ':' + datetime.getMinutes();
+  $('#tanggal-detail-order').html(date);
+  $('#jam-detail-order').html(time);
 
-  var data_order_detail = "";
+  var data_order_detail = '';
   var total_order_detail = 0;
   for (i in order_item.menu) {
     var nominal = order_item.menu[i].harga * order_item.menu[i].jumlah;
@@ -725,33 +725,33 @@ function showOrder(id) {
 								</div>
 							</div>`;
   }
-  $("#order-detail-content").html(data_order_detail);
-  $("#total-order-detail").html(formatRupiah(total_order_detail));
+  $('#order-detail-content').html(data_order_detail);
+  $('#total-order-detail').html(formatRupiah(total_order_detail));
 
   var ppn = parseInt((total_order_detail * 10) / 100);
-  $("#ppn-order-detail").html(formatRupiah(ppn));
+  $('#ppn-order-detail').html(formatRupiah(ppn));
 
   var total_bayar = total_order_detail + ppn;
-  $("#total-bayar-order-detail").html(formatRupiah(total_bayar));
+  $('#total-bayar-order-detail').html(formatRupiah(total_bayar));
 }
 
 function clearTransaction() {
-  localStorage.removeItem("cart");
-  localStorage.removeItem("order");
+  localStorage.removeItem('cart');
+  localStorage.removeItem('order');
 
-  $("#modal-message").html("Data transaksi berhasil dihapus");
-  $("#modalAlert").modal("show");
+  $('#modal-message').html('Data transaksi berhasil dihapus');
+  $('#modalAlert').modal('show');
 }
 
 function liffOpenWindow() {
   if (!liff.isInClient()) {
-    $("#modal-message").html(
-      "Fungsi ini tidak tersedia pada browser eksternal"
+    $('#modal-message').html(
+      'Fungsi ini tidak tersedia pada browser eksternal'
     );
-    $("#modalAlert").modal("show");
+    $('#modalAlert').modal('show');
   } else {
     liff.openWindow({
-      url: "https://liff.line.me/1655817666-VQPqWLB1",
+      url: 'https://liff.line.me/1655817666-VQPqWLB1',
       external: true,
     });
   }
@@ -759,10 +759,10 @@ function liffOpenWindow() {
 
 function liffCloseApp() {
   if (!liff.isInClient()) {
-    $("#modal-message").html(
-      "Fungsi ini tidak tersedia pada browser eksternal"
+    $('#modal-message').html(
+      'Fungsi ini tidak tersedia pada browser eksternal'
     );
-    $("#modalAlert").modal("show");
+    $('#modalAlert').modal('show');
   } else {
     liff.closeWindow();
   }
@@ -777,8 +777,8 @@ function liffLogin() {
 function liffLogout() {
   if (liff.isLoggedIn()) {
     if (liff.isInClient()) {
-      $("#modal-message").html("Fitur logout tersedia untuk browser eksternal");
-      $("#modalAlert").modal("show");
+      $('#modal-message').html('Fitur logout tersedia untuk browser eksternal');
+      $('#modalAlert').modal('show');
     } else {
       liff.logout();
       window.location.reload();
@@ -789,59 +789,59 @@ function liffLogout() {
 function formatRupiah(angka) {
   var angka = angka.toString();
 
-  var number_string = angka.replace(/[^,\d]/g, "").toString(),
-    split = number_string.split("."),
+  var number_string = angka.replace(/[^,\d]/g, '').toString(),
+    split = number_string.split('.'),
     sisa = split[0].length % 3,
     rupiah = split[0].substr(0, sisa),
     ribuan = split[0].substr(sisa).match(/\d{3}/gi);
 
   // tambahkan titik jika yang di input sudah menjadi angka ribuan
   if (ribuan) {
-    separator = sisa ? "." : "";
-    rupiah += separator + ribuan.join(".");
+    separator = sisa ? '.' : '';
+    rupiah += separator + ribuan.join('.');
   }
 
-  rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+  rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
   return rupiah;
 }
 
 function numToMonth(bulan) {
   switch (bulan) {
     case 0:
-      bulan = "Januari";
+      bulan = 'Januari';
       break;
     case 1:
-      bulan = "Februari";
+      bulan = 'Februari';
       break;
     case 2:
-      bulan = "Maret";
+      bulan = 'Maret';
       break;
     case 3:
-      bulan = "April";
+      bulan = 'April';
       break;
     case 4:
-      bulan = "Mei";
+      bulan = 'Mei';
       break;
     case 5:
-      bulan = "Juni";
+      bulan = 'Juni';
       break;
     case 6:
-      bulan = "Juli";
+      bulan = 'Juli';
       break;
     case 7:
-      bulan = "Agustus";
+      bulan = 'Agustus';
       break;
     case 8:
-      bulan = "September";
+      bulan = 'September';
       break;
     case 9:
-      bulan = "Oktober";
+      bulan = 'Oktober';
       break;
     case 10:
-      bulan = "November";
+      bulan = 'November';
       break;
     case 11:
-      bulan = "Desember";
+      bulan = 'Desember';
       break;
   }
   return bulan;
