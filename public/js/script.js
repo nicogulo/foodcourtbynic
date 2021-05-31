@@ -35,31 +35,28 @@ const displayCharacters = (characters) => {
   });
   characters.sort((a, b) => b.rate - a.rate);
 
-  characters.forEach((character) => {
+  characters.forEach(() => {
     const htmlString = characters
+      .slice(0, 5)
       .map((character) => {
         return `
-  
-        <div class="col-6 my-2" onClick="addToCart( 
-        ${character.id} 
-        )">
-       
-                    <div class="menu card">
-                      <img
-                        class="card-img-top"
-                        src="${character.foto}"
-                        alt="Card image cap"
-                      />
-                      <div class="card-body">
-                        <h5 class="menu-name">${character.nama}</h5>
-                        <p> ${character.harga}</p>
-                        <p> ${character.rate}</p>
-                      </div>
-                    </div>
-                
-                </div>
-  
-          `;
+        <div class="card  mb-3 col-11 mx-auto rounded my-2 p-3" style="border-color: #88b06a;" onClick="addToCart(${character.id} )">
+         <div class="d-flex justify-content-start align-items-center">
+          <div class="col-sm-4 text-center">
+           <img src="${character.foto}" style="width: 120px; background-color: #d4f2d0; margin-bottom:10px" class="card-img img-fluid" alt="card image">
+             <span>Rate ${character.rate} / 5</span>
+
+          </div>
+            <div class="col-sm-8">
+                <p class="menu-name primary-color">${character.nama}</p>
+                <p class="detail">${character.detail}</p>
+                <span class="menu-price">Rp. ${character.harga}</span>   
+                <a class="btn btn-success float-right btn-tambah">
+                <i class="fas fa-plus"></i>
+                </a>
+            </div>
+          </div>
+        </div>`;
       })
       .join('');
     charactersList.innerHTML = htmlString;
@@ -75,7 +72,6 @@ function setPage(menu) {
   if (menu == 'home') {
     loadCart();
     $('#home').show();
-    $('#recomm').hide();
     $('#menu').hide();
     $('#order').hide();
     $('#account').hide();
@@ -88,7 +84,6 @@ function setPage(menu) {
     loadMenu();
     loadCart();
     $('#home').hide();
-    $('#recomm').hide();
     $('#menu').show();
     $('#order').hide();
     $('#account').hide();
@@ -100,7 +95,6 @@ function setPage(menu) {
   } else if (menu == 'order') {
     loadOrder();
     $('#home').hide();
-    $('#recomm').hide();
     $('#menu').hide();
     $('#order').show();
     $('#account').hide();
@@ -113,7 +107,6 @@ function setPage(menu) {
     loadProfile();
     $('#home').hide();
     $('#menu').hide();
-    $('#recomm').hide();
     $('#order').hide();
     $('#account').show();
     $('#cart').hide();
@@ -125,7 +118,6 @@ function setPage(menu) {
     loadCart();
     $('#home').hide();
     $('#menu').hide();
-    $('#recomm').hide();
     $('#order').hide();
     $('#account').hide();
     $('#cart').show();
@@ -137,25 +129,12 @@ function setPage(menu) {
     loadCart();
     $('#home').hide();
     $('#menu').hide();
-    $('#recomm').hide();
     $('#order').hide();
     $('#account').hide();
     $('#cart').hide();
     $('#order-detail').show();
 
     $('#nav').hide();
-    $('#order-btn').hide();
-  } else if (menu == 'recomm') {
-    recommMenu();
-    $('#home').hide();
-    $('#menu').hide();
-    $('#recomm').show();
-    $('#order').hide();
-    $('#account').hide();
-    $('#cart').hide();
-    $('#order-detail').hide();
-
-    $('#nav').show();
     $('#order-btn').hide();
   }
 }
@@ -232,56 +211,6 @@ function loadMenu() {
   $('#food-menu').html(data_food);
   $('#drink-menu').html(data_drink);
   $('#snack-menu').html(data_snack);
-}
-
-function recommMenu() {
-  var data_menurecomm = JSON.parse(localStorage.getItem('menurecomm'));
-  var data_foodrecomm = '';
-  var data_drinkrecomm = '';
-  var data_snackrecomm = '';
-
-  for (i in data_menurecomm) {
-    var menu_item =
-      `	<div class="card  mb-3 col-11 mx-auto rounded my-2 p-3" style="border-color: #88b06a;" onClick="addToCart(` +
-      data_menurecomm[i].id +
-      `)">
-         <div class="d-flex justify-content-start align-items-center">
-          <div class="col-sm-4 text-center">
-           <img src="` +
-      data_menurecomm[i].foto +
-      `" style="width: 120px; background-color: #d4f2d0; margin-bottom:10px" class="card-img img-fluid" alt="card image">
-             <span>Rate ` +
-      data_menurecomm[i].rate +
-      ` / 5</span>
-
-          </div>
-            <div class="col-sm-8">
-                <p class="menu-name primary-color">` +
-      data_menurecomm[i].nama +
-      `</p>
-                <p class="detail">` +
-      data_menurecomm[i].detail +
-      `</p>
-                <span class="menu-price">Rp. ` +
-      formatRupiah(data_menurecomm[i].harga) +
-      `</span>
-                <a class="btn btn-success float-right btn-tambah">
-                <i class="fas fa-plus"></i>
-                </a>
-            </div>
-          </div>
-        </div>`;
-    if (data_menurecomm[i].kategori == 'foodrecomm') {
-      data_foodrecomm += menu_item;
-    } else if (data_menurecomm[i].kategori == 'drinkrecomm') {
-      data_drinkrecomm += menu_item;
-    } else if (data_menurecomm[i].kategori == 'snackrecomm') {
-      data_snackrecomm += menu_item;
-    }
-  }
-  $('#food-menu-recomm').html(data_foodrecomm);
-  $('#drink-menu-recomm').html(data_drinkrecomm);
-  $('#snack-menu-recomm').html(data_snackrecomm);
 }
 
 function loadCart() {
