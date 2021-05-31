@@ -1,16 +1,7 @@
 // ! API
 let allmenu = [];
-// const menusList = document.getElementById("menusList");
-// const searchBar = document.getElementById("searchBar");
 
-// searchBar.addEventListener("keyup", (e) => {
-//   const searchString = e.target.value.toLowerCase();
-
-//   const filteredMenus = allmenu.filter((menu) => {
-//     return menu.nama.toLowerCase().includes(searchString);
-//   });
-//   displayMenus(filteredMenus);
-// });
+let user = {};
 
 const loadMenus = async () => {
   try {
@@ -21,28 +12,70 @@ const loadMenus = async () => {
   }
 };
 
-// const displayMenus = (menus) => {
-//   const htmlString = menus
-//     .map((menu) => {
-//       return `
-//           <div class="character">
-//           <img src="${menu.foto}"></img>
-//               <h2>${menu.nama}</h2>
-//               <p> ${menu.harga}</p>
-//               <p> ${menu.detail}</p>
-//           </div>
-//       `;
-//     })
-//     .join("");
-//   all.innerHTML = htmlString;
-// };
-
 loadMenus();
+//////////////////////////
+
+const charactersList = document.getElementById('charactersList');
+
+let menurecomm = [];
+
+const loadCharacters = async () => {
+  try {
+    const res = await fetch('http://foodmenu-api.herokuapp.com/api/menu');
+    menurecomm = await res.json();
+    displayCharacters(menurecomm);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const displayCharacters = (characters) => {
+  characters.sort((a, b) => {
+    return a.rate - b.rate;
+  });
+  characters.sort((a, b) => b.rate - a.rate);
+
+  characters.forEach((character) => {
+    const htmlString = characters
+      .map((character) => {
+        return `
+  
+        <div class="col-6 my-2" onClick="addToCart( 
+        ${character.id} 
+        )">
+       
+                    <div class="menu card">
+                      <img
+                        class="card-img-top"
+                        src="${character.foto}"
+                        alt="Card image cap"
+                      />
+                      <div class="card-body">
+                        <h5 class="menu-name">${character.nama}</h5>
+                        <p> ${character.harga}</p>
+                        <p> ${character.rate}</p>
+                      </div>
+                    </div>
+                
+                </div>
+  
+          `;
+      })
+      .join('');
+    charactersList.innerHTML = htmlString;
+  });
+};
+
+loadCharacters();
+
+////////////////////////////////
+
 // !
 function setPage(menu) {
   if (menu == 'home') {
     loadCart();
     $('#home').show();
+    $('#recomm').hide();
     $('#menu').hide();
     $('#order').hide();
     $('#account').hide();
@@ -55,6 +88,7 @@ function setPage(menu) {
     loadMenu();
     loadCart();
     $('#home').hide();
+    $('#recomm').hide();
     $('#menu').show();
     $('#order').hide();
     $('#account').hide();
@@ -66,6 +100,7 @@ function setPage(menu) {
   } else if (menu == 'order') {
     loadOrder();
     $('#home').hide();
+    $('#recomm').hide();
     $('#menu').hide();
     $('#order').show();
     $('#account').hide();
@@ -78,6 +113,7 @@ function setPage(menu) {
     loadProfile();
     $('#home').hide();
     $('#menu').hide();
+    $('#recomm').hide();
     $('#order').hide();
     $('#account').show();
     $('#cart').hide();
@@ -89,6 +125,7 @@ function setPage(menu) {
     loadCart();
     $('#home').hide();
     $('#menu').hide();
+    $('#recomm').hide();
     $('#order').hide();
     $('#account').hide();
     $('#cart').show();
@@ -100,6 +137,7 @@ function setPage(menu) {
     loadCart();
     $('#home').hide();
     $('#menu').hide();
+    $('#recomm').hide();
     $('#order').hide();
     $('#account').hide();
     $('#cart').hide();
@@ -107,133 +145,20 @@ function setPage(menu) {
 
     $('#nav').hide();
     $('#order-btn').hide();
+  } else if (menu == 'recomm') {
+    recommMenu();
+    $('#home').hide();
+    $('#menu').hide();
+    $('#recomm').show();
+    $('#order').hide();
+    $('#account').hide();
+    $('#cart').hide();
+    $('#order-detail').hide();
+
+    $('#nav').show();
+    $('#order-btn').hide();
   }
 }
-
-// autocomplete
-// function autocomplete(inp, arr) {
-//   /*the autocomplete function takes two arguments,
-//   the text field element and an array of possible autocompleted values:*/
-//   var currentFocus;
-//   /*execute a function when someone writes in the text field:*/
-//   inp.addEventListener("input", function (e) {
-//     var a,
-//       b,
-//       i,
-//       val = this.value;
-//     /*close any already open lists of autocompleted values*/
-//     closeAllLists();
-//     if (!val) {
-//       return false;
-//     }
-//     currentFocus = -1;
-//     /*create a DIV element that will contain the items (values):*/
-//     a = document.createElement("DIV");
-//     a.setAttribute("id", this.id + "autocomplete-list");
-//     a.setAttribute("class", "autocomplete-items");
-//     /*append the DIV element as a child of the autocomplete container:*/
-//     this.parentNode.appendChild(a);
-//     /*for each item in the array...*/
-//     for (i = 0; i < arr.length; i++) {
-//       /*check if the item starts with the same letters as the text field value:*/
-//       if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-//         /*create a DIV element for each matching element:*/
-//         b = document.createElement("DIV");
-//         /*make the matching letters bold:*/
-//         b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-//         b.innerHTML += arr[i].substr(val.length);
-//         /*insert a input field that will hold the current array item's value:*/
-//         b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-//         /*execute a function when someone clicks on the item value (DIV element):*/
-//         b.addEventListener("click", function (e) {
-//           /*insert the value for the autocomplete text field:*/
-//           inp.value = this.getElementsByTagName("input")[0].value;
-//           /*close the list of autocompleted values,
-//               (or any other open lists of autocompleted values:*/
-//           closeAllLists();
-//         });
-//         a.appendChild(b);
-//       }
-//     }
-//   });
-//   /*execute a function presses a key on the keyboard:*/
-//   inp.addEventListener("keydown", function (e) {
-//     var x = document.getElementById(this.id + "autocomplete-list");
-//     if (x) x = x.getElementsByTagName("div");
-//     if (e.keyCode == 40) {
-//       /*If the arrow DOWN key is pressed,
-//         increase the currentFocus variable:*/
-//       currentFocus++;
-//       /*and and make the current item more visible:*/
-//       addActive(x);
-//     } else if (e.keyCode == 38) {
-//       //up
-//       /*If the arrow UP key is pressed,
-//         decrease the currentFocus variable:*/
-//       currentFocus--;
-//       /*and and make the current item more visible:*/
-//       addActive(x);
-//     } else if (e.keyCode == 13) {
-//       /*If the ENTER key is pressed, prevent the form from being submitted,*/
-//       e.preventDefault();
-//       if (currentFocus > -1) {
-//         /*and simulate a click on the "active" item:*/
-//         if (x) x[currentFocus].click();
-//       }
-//     }
-//   });
-
-//   function addActive(x) {
-//     /*a function to classify an item as "active":*/
-//     if (!x) return false;
-//     /*start by removing the "active" class on all items:*/
-//     removeActive(x);
-//     if (currentFocus >= x.length) currentFocus = 0;
-//     if (currentFocus < 0) currentFocus = x.length - 1;
-//     /*add class "autocomplete-active":*/
-//     x[currentFocus].classList.add("autocomplete-active");
-//   }
-
-//   function removeActive(x) {
-//     /*a function to remove the "active" class from all autocomplete items:*/
-//     for (var i = 0; i < x.length; i++) {
-//       x[i].classList.remove("autocomplete-active");
-//     }
-//   }
-
-//   function closeAllLists(elmnt) {
-//     /*close all autocomplete lists in the document,
-//     except the one passed as an argument:*/
-//     var x = document.getElementsByClassName("autocomplete-items");
-//     for (var i = 0; i < x.length; i++) {
-//       if (elmnt != x[i] && elmnt != inp) {
-//         x[i].parentNode.removeChild(x[i]);
-//       }
-//     }
-//   }
-//   /*execute a function when someone clicks in the document:*/
-//   document.addEventListener("click", function (e) {
-//     closeAllLists(e.target);
-//   });
-// }
-
-// /*An array containing all the country names in the world:*/
-// var countries = [
-//   "Bacon Burger",
-//   "Burger Keju",
-//   "Krabby Patty",
-//   "White Water",
-//   "Cola",
-//   "Sprite",
-//   "Pancakes",
-//   "Chicken Nugget",
-// ];
-
-// /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
-// autocomplete(document.getElementById("myInput"), countries);
-
-//localStorage.clear();
-let user = {};
 
 function loadData() {
   setPage('home');
@@ -307,6 +232,56 @@ function loadMenu() {
   $('#food-menu').html(data_food);
   $('#drink-menu').html(data_drink);
   $('#snack-menu').html(data_snack);
+}
+
+function recommMenu() {
+  var data_menurecomm = JSON.parse(localStorage.getItem('menurecomm'));
+  var data_foodrecomm = '';
+  var data_drinkrecomm = '';
+  var data_snackrecomm = '';
+
+  for (i in data_menurecomm) {
+    var menu_item =
+      `	<div class="card  mb-3 col-11 mx-auto rounded my-2 p-3" style="border-color: #88b06a;" onClick="addToCart(` +
+      data_menurecomm[i].id +
+      `)">
+         <div class="d-flex justify-content-start align-items-center">
+          <div class="col-sm-4 text-center">
+           <img src="` +
+      data_menurecomm[i].foto +
+      `" style="width: 120px; background-color: #d4f2d0; margin-bottom:10px" class="card-img img-fluid" alt="card image">
+             <span>Rate ` +
+      data_menurecomm[i].rate +
+      ` / 5</span>
+
+          </div>
+            <div class="col-sm-8">
+                <p class="menu-name primary-color">` +
+      data_menurecomm[i].nama +
+      `</p>
+                <p class="detail">` +
+      data_menurecomm[i].detail +
+      `</p>
+                <span class="menu-price">Rp. ` +
+      formatRupiah(data_menurecomm[i].harga) +
+      `</span>
+                <a class="btn btn-success float-right btn-tambah">
+                <i class="fas fa-plus"></i>
+                </a>
+            </div>
+          </div>
+        </div>`;
+    if (data_menurecomm[i].kategori == 'foodrecomm') {
+      data_foodrecomm += menu_item;
+    } else if (data_menurecomm[i].kategori == 'drinkrecomm') {
+      data_drinkrecomm += menu_item;
+    } else if (data_menurecomm[i].kategori == 'snackrecomm') {
+      data_snackrecomm += menu_item;
+    }
+  }
+  $('#food-menu-recomm').html(data_foodrecomm);
+  $('#drink-menu-recomm').html(data_drinkrecomm);
+  $('#snack-menu-recomm').html(data_snackrecomm);
 }
 
 function loadCart() {
@@ -846,27 +821,3 @@ function numToMonth(bulan) {
   }
   return bulan;
 }
-
-// let cart = [
-// 	{ nama: 'Chicken Nugget', kategori: 'snack', harga: 9090, foto: 'ChickenNuggets.png', jumlah: 4}
-// ]
-
-// let order = [
-// 	{
-// 		id: 1,
-// 		tanggal: '12-12-2020 23:59:59',
-// 		menu: [
-// 			{ id: 2, nama: 'Chicken Nugget', kategori: 'snack', harga: 9090, foto: 'ChickenNuggets.png', jumlah: 4},
-// 			{ id: 6, nama: 'Sprite', kategori: 'drink', harga: 5454, foto: 'Sprite.png', jumlah: 7}
-// 		]
-// 	},
-// 	{
-// 		id: 1,
-// 		tanggal: '12-12-2020 23:59:59',
-// 		menu: [
-// 			{ id: 6, nama: 'Sprite', kategori: 'drink', harga: 5454, foto: 'Sprite.png', jumlah: 7},
-// 			{ id: 2, nama: 'Chicken Nugget', kategori: 'snack', harga: 9090, foto: 'ChickenNuggets.png', jumlah: 4},
-// 			{ id: 3, nama: 'Burger Keju', kategori: 'food', harga: 36363, foto: 'DoubleCheeseburger.png', jumlah: 14}
-// 		]
-// 	}
-// ]

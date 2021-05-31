@@ -136,34 +136,6 @@
                 />
               </div>
             </div>
-            <!-- <div class="row">
-              <div class="col-12 text-center mt-5">
-                <a href="#donut"
-                  ><button
-                    class="btn button-home text-white"
-                    style="background-color: #88b06a"
-                  >
-                    Snack
-                  </button></a
-                >
-                <a href="#pinkdonut"
-                  ><button
-                    class="btn button-home text-white"
-                    style="background-color: #88b06a"
-                  >
-                    Minuman
-                  </button></a
-                >
-                <a href="#mixdonut"
-                  ><button
-                    class="btn button-home text-white"
-                    style="background-color: #88b06a"
-                  >
-                    Mix
-                  </button></a
-                >
-              </div>
-            </div> -->
 
             <div class="row menu-list text-center">
               <div class="col-6 my-2" onclick="setPage('menu')">
@@ -220,9 +192,34 @@
                   </div>
                 </a>
               </div>
+
+              <ul id="charactersList"></ul>
             </div>
           </div>
         </div>
+
+        <!-- Recommend Menu -->
+        <div id="recomm" style="display: none">
+          <div class="row">
+            <div class="col-8">
+              <h3 class="primary-color page-title m-3">RECOMENDATION</h3>
+            </div>
+            <div class="col-4 text-right">
+              <div
+                class="cart-wrapper m-3 py-3 pr-3"
+                onclick="setPage('cart')"
+                style="position: relative"
+              >
+                <i class="fas fa-shopping-cart primary-color"></i>
+                <span id="cart_num_menu" class="badge badge-success cart-badge"
+                  >3</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Menu Page -->
         <div id="menu" style="display: none">
           <div class="row">
             <div class="col-8">
@@ -250,7 +247,7 @@
               placeholder="search for a character"
             />
           </div>
-          <ul id="menusList"></ul>
+
           <div class="alert alert-success m-3">
             Klik pada menu untuk menambahkan ke keranjang
           </div>
@@ -264,22 +261,26 @@
 
           <div class="menu-wrapper">
             <div class="menu-section-title primary-color">
-              <span>Drink</span>
+              <span id="drink">Drink</span>
             </div>
             <div id="drink-menu" class="menu-item row"></div>
           </div>
 
           <div class="menu-wrapper">
             <div class="menu-section-title primary-color">
-              <span>Snack</span>
+              <span id="snack">Snack</span>
             </div>
             <div id="snack-menu" class="menu-item row"></div>
           </div>
         </div>
+
+        <!-- Order Page -->
         <div id="order" style="display: none">
           <h3 class="primary-color page-title m-3">ORDER HISTORY</h3>
           <div id="order-content" class="order-wrapper"></div>
         </div>
+
+        <!-- Account Page -->
         <div id="account" style="display: none">
           <div id="profile-wrapper">
             <h3 class="primary-color page-title mt-3">PROFILE</h3>
@@ -360,6 +361,8 @@
             </div>
           </div>
         </div>
+
+        <!-- Cart Page -->
         <div id="cart" style="display: none">
           <div class="row">
             <div class="col-2 pr-0">
@@ -408,6 +411,8 @@
             </div>
           </div>
         </div>
+
+        <!-- Order Detail Page -->
         <div id="order-detail" style="display: none">
           <div class="row">
             <div class="col-2 pr-0">
@@ -479,6 +484,7 @@
         </div>
       </main>
 
+      <!-- Navbar -->
       <nav id="nav" class="navbar">
         <div class="row">
           <div class="col-4 text-center">
@@ -488,6 +494,16 @@
               style="color: #88b06a"
             >
               <i class="fas fa-home"></i><br /><small>Home</small>
+            </a>
+          </div>
+
+          <div class="col-4 text-center">
+            <a
+              href="javascript:void(0)"
+              onclick="setPage('recomm')"
+              style="color: #88b06a"
+            >
+              <i class="fas fa-home"></i><br /><small>Recomendation</small>
             </a>
           </div>
           <div class="col-4 text-center">
@@ -510,6 +526,7 @@
           </div>
         </div>
       </nav>
+
       <div id="order-btn" onclick="addOrder()">
         <button class="btn btn-success btn-block">ORDER</button>
       </div>
