@@ -44,7 +44,8 @@ const displayCharacters = (characters) => {
          <div class="d-flex justify-content-start align-items-center">
           <div class="col-sm-4 text-center">
            <img src="${character.foto}" style="width: 120px; background-color: #d4f2d0; margin-bottom:10px" class="card-img img-fluid" alt="card image">
-             <span>Rate ${character.rate} / 5</span>
+             <span><i class="fas fa-star primary-color" style="cursor: auto;"></i> ${character.rate} / 5</span>
+             
 
           </div>
             <div class="col-sm-8">
@@ -179,7 +180,7 @@ function loadMenu() {
            <img src="` +
       data_menu[i].foto +
       `" style="width: 120px; background-color: #d4f2d0; margin-bottom:10px" class="card-img img-fluid" alt="card image">
-             <span>Rate ` +
+             <span><i class="fas fa-star primary-color" style="cursor: auto;"></i> ` +
       data_menu[i].rate +
       ` / 5</span>
 
