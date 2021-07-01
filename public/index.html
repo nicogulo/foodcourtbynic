@@ -103,11 +103,11 @@
                   placeholder="Cari menu"
                 />
                 <div class="input-group-append">
-                  <span
+                  <a
                     class="input-group-text amber"
                     style="background-color: #88b06a"
-                    ><i class="fas fa-search text-white" aria-hidden="true"></i
-                  ></span>
+                    >Cari</a
+                  >
                 </div>
               </div>
             </div>
@@ -514,16 +514,42 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-body">
-              <p id="modal-message">Hallo</p>
+              <p id="modal-message" class="text-center">Hallo</p>
             </div>
-            <div class="modal-footer p-1">
-              <button
-                type="button"
-                class="btn btn-sm btn-secondary"
-                data-dismiss="modal"
-              >
-                Oke
-              </button>
+            <div class="text-center">Thanks for rating us!</div>
+            <div class="mb-3">
+              <div class="container text-center">
+                <div class="star-widget">
+                  <input type="radio" name="rate" id="rate-5" />
+                  <label for="rate-5" class="fas fa-star"></label>
+                  <input type="radio" name="rate" id="rate-4" />
+                  <label for="rate-4" class="fas fa-star"></label>
+                  <input type="radio" name="rate" id="rate-3" />
+                  <label for="rate-3" class="fas fa-star"></label>
+                  <input type="radio" name="rate" id="rate-2" />
+                  <label for="rate-2" class="fas fa-star"></label>
+                  <input type="radio" name="rate" id="rate-1" />
+                  <label for="rate-1" class="fas fa-star"></label>
+                  <form action="#">
+                    <header></header>
+                    <div class="textarea">
+                      <textarea
+                        cols="30"
+                        placeholder="Describe your experience.."
+                      ></textarea>
+                    </div>
+                    <div class="btn-rating">
+                      <button
+                        type="submit"
+                        class="btn btn-sm btn-secondary"
+                        data-dismiss="modal"
+                      >
+                        Oke
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 // ! API
 let allmenu = [];
-
+localStorage.clear();
 let user = {};
 
 const loadMenus = async () => {
@@ -13,7 +13,6 @@ const loadMenus = async () => {
 };
 
 loadMenus();
-//////////////////////////
 
 const charactersList = document.getElementById('charactersList');
 
@@ -21,13 +20,15 @@ let menurecomm = [];
 
 const loadCharacters = async () => {
   try {
-    const res = await fetch('http://foodmenu-api.herokuapp.com/api/menu');
+    const res = await fetch('https://foodmenu-api.herokuapp.com/api/menu');
     menurecomm = await res.json();
     displayCharacters(menurecomm);
   } catch (err) {
     console.error(err);
   }
 };
+
+loadCharacters();
 
 const displayCharacters = (characters) => {
   characters.sort((a, b) => {
@@ -50,7 +51,7 @@ const displayCharacters = (characters) => {
           </div>
             <div class="col-sm-8">
                 <p class="menu-name primary-color">${character.nama}</p>
-                <p class="detail">${character.detail}</p>
+                <p class="kedai">${character.kedai}</p>
                 <span class="menu-price">Rp. ${character.harga}</span>   
                 <a class="btn btn-success float-right btn-tambah">
                 <i class="fas fa-plus"></i>
@@ -64,11 +65,20 @@ const displayCharacters = (characters) => {
   });
 };
 
-loadCharacters();
+// const btnRating = document.querySelector('.btn-rating');
+// const post = document.querySelector('.post');
+// const widget = document.querySelector('.star-widget');
+// const editBtn = document.querySelector('.edit');
+// btnRating.onclick = () => {
+//   widget.style.display = 'none';
+//   post.style.display = 'block';
+//   editBtn.onclick = () => {
+//     widget.style.display = 'block';
+//     post.style.display = 'none';
+//   };
+//   return false;
+// };
 
-////////////////////////////////
-
-// !
 function setPage(menu) {
   if (menu == 'home') {
     loadCart();
@@ -189,8 +199,8 @@ function loadMenu() {
                 <p class="menu-name primary-color">` +
       data_menu[i].nama +
       `</p>
-                <p class="detail">` +
-      data_menu[i].detail +
+                <p class="kedai">` +
+      data_menu[i].kedai +
       `</p>
                 <span class="menu-price">Rp. ` +
       formatRupiah(data_menu[i].harga) +
