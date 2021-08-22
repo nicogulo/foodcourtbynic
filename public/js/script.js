@@ -1,6 +1,6 @@
 // ! API
 let allmenu = [];
-localStorage.clear();
+// localStorage.clear();
 let user = {};
 
 const loadMenus = async () => {
@@ -192,9 +192,9 @@ function loadMenu() {
       data_menu[i].foto +
       `" style="width: 120px; background-color: #d4f2d0; margin-bottom:10px" class="card-img img-fluid" alt="card image"/>
              
-      <span><i class="fas fa-star primary-color" style="cursor: auto;"></i> ` +
+      <i class="fas fa-star primary-color" style="cursor: auto;"></i> ` +
       data_menu[i].rate +
-      ` / 5</span>
+      ` / 5
 
           </div>
             <div class="col-sm-8">
