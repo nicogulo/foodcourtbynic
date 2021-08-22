@@ -44,13 +44,14 @@ const displayCharacters = (characters) => {
         <div class="card  mb-3 col-11 mx-auto rounded my-2 p-3" style="border-color: #88b06a;" onClick="addToCart(${character.id} )">
          <div class="d-flex justify-content-start align-items-center">
           <div class="col-sm-4 text-center">
-           <img src="${character.foto}" style="width: 120px; background-color: #d4f2d0; margin-bottom:10px" class="card-img img-fluid" alt="card image">
+           <img src="${character.foto}" style="width: 120px; background-color: #d4f2d0; margin-bottom:10px" class="card-img img-fluid" alt="card image"/>
              <span><i class="fas fa-star primary-color" style="cursor: auto;"></i> ${character.rate} / 5</span>
              
 
           </div>
             <div class="col-sm-8">
                 <p class="menu-name primary-color">${character.nama}</p>
+                <p class="kedai">${character.detail}</p>
                 <p class="kedai">${character.kedai}</p>
                 <span class="menu-price">Rp. ${character.harga}</span>   
                 <a class="btn btn-success float-right btn-tambah">
@@ -189,8 +190,9 @@ function loadMenu() {
           <div class="col-sm-4 text-center">
            <img src="` +
       data_menu[i].foto +
-      `" style="width: 120px; background-color: #d4f2d0; margin-bottom:10px" class="card-img img-fluid" alt="card image">
-             <span><i class="fas fa-star primary-color" style="cursor: auto;"></i> ` +
+      `" style="width: 120px; background-color: #d4f2d0; margin-bottom:10px" class="card-img img-fluid" alt="card image"/>
+             
+      <span><i class="fas fa-star primary-color" style="cursor: auto;"></i> ` +
       data_menu[i].rate +
       ` / 5</span>
 
@@ -201,6 +203,9 @@ function loadMenu() {
       `</p>
                 <p class="kedai">` +
       data_menu[i].kedai +
+      `</p>
+      <p class="kedai">` +
+      data_menu[i].detail +
       `</p>
                 <span class="menu-price">Rp. ` +
       formatRupiah(data_menu[i].harga) +
@@ -245,6 +250,7 @@ function loadCart() {
 				<span class="menu-name">` +
         cart[i].nama +
         `</span>
+  
 			</div>
 
 			<div class="col-6 text-right" style="padding-right:30px;">
@@ -566,12 +572,15 @@ function addOrder() {
     msg_order +=
       ' dengan total pesanan Rp ' +
       formatRupiah(total_bayar) +
-      '. Terima kasih banyak!';
+      `. Terima kasih banyak! 
+      `;
 
     if (!liff.isInClient()) {
       $('#modal-message').html(msg_order);
       $('#modalAlert').modal('show');
     } else {
+      $('#modal-message').html(msg_order);
+      $('#modalAlert').modal('show');
       liff
         .sendMessages([
           {
