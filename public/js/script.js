@@ -1,8 +1,9 @@
 // ! API
 let allmenu = [];
-// localStorage.clear();
+let menurecomm = [];
 let user = {};
 
+// GET API MENU
 const loadMenus = async () => {
   try {
     const res = await fetch('https://foodmenu-api.herokuapp.com/api/menu');
@@ -14,46 +15,46 @@ const loadMenus = async () => {
 
 loadMenus();
 
-const charactersList = document.getElementById('charactersList');
-
-let menurecomm = [];
-
-const loadCharacters = async () => {
+// GET DOM
+const recommendationList = document.getElementById('listRecommendation');
+// GET MENU RECOMMENDATION
+const loadRecommendation = async () => {
   try {
     const res = await fetch('https://foodmenu-api.herokuapp.com/api/menu');
     menurecomm = await res.json();
-    displayCharacters(menurecomm);
+    displayRecommendation(menurecomm);
   } catch (err) {
     console.error(err);
   }
 };
 
-loadCharacters();
+loadRecommendation();
 
-const displayCharacters = (characters) => {
-  characters.sort((a, b) => {
+// DISPLAY MENU RECOMMENDATION
+const displayRecommendation = (recommendations) => {
+  recommendations.sort((a, b) => {
     return a.rate - b.rate;
   });
-  characters.sort((a, b) => b.rate - a.rate);
+  recommendations.sort((a, b) => b.rate - a.rate);
 
-  characters.forEach(() => {
-    const htmlString = characters
+  recommendations.forEach(() => {
+    const htmlString = recommendations
       .slice(0, 5)
-      .map((character) => {
+      .map((recommendation) => {
         return `
-        <div class="card  mb-3 col-11 mx-auto rounded my-2 p-3" style="border-color: #88b06a;" onClick="addToCart(${character.id} )">
+        <div class="card  mb-3 col-11 mx-auto rounded my-2 p-3" style="border-color: #88b06a;" onClick="addToCart(${recommendation.id} )">
          <div class="d-flex justify-content-start align-items-center">
           <div class="col-sm-4 text-center">
-           <img src="${character.foto}" style="width: 120px; background-color: #d4f2d0; margin-bottom:10px" class="card-img img-fluid" alt="card image"/>
-             <span><i class="fas fa-star primary-color" style="cursor: auto;"></i> ${character.rate} / 5</span>
+           <img src="${recommendation.foto}" style="width: 120px; background-color: #d4f2d0; margin-bottom:10px" class="card-img img-fluid" alt="card image"/>
+             <span><i class="fas fa-star primary-color" style="cursor: auto;"></i> ${recommendation.rate} / 5</span>
              
 
           </div>
             <div class="col-sm-8">
-                <p class="menu-name primary-color">${character.nama}</p>
-                <p class="kedai">${character.detail}</p>
-                <p class="kedai">${character.kedai}</p>
-                <span class="menu-price">Rp. ${character.harga}</span>   
+                <p class="menu-name primary-color">${recommendation.nama}</p>
+                <p class="kedai">${recommendation.detail}</p>
+                <p class="kedai">${recommendation.kedai}</p>
+                <span class="menu-price">Rp. ${recommendation.harga}</span>   
                 <a class="btn btn-success float-right btn-tambah">
                 <i class="fas fa-plus"></i>
                 </a>
@@ -62,7 +63,7 @@ const displayCharacters = (characters) => {
         </div>`;
       })
       .join('');
-    charactersList.innerHTML = htmlString;
+    listRecommendation.innerHTML = htmlString;
   });
 };
 
@@ -572,8 +573,7 @@ function addOrder() {
     msg_order +=
       ' dengan total pesanan Rp ' +
       formatRupiah(total_bayar) +
-      `. Terima kasih banyak! 
-      `;
+      '. Terima kasih banyak!';
 
     if (!liff.isInClient()) {
       $('#modal-message').html(msg_order);
@@ -665,6 +665,12 @@ function clearTransaction() {
 
   $('#modal-message').html('Data transaksi berhasil dihapus');
   $('#modalAlert').modal('show');
+}
+function clearOrder() {
+  localStorage.removeItem('cart');
+  localStorage.removeItem('order');
+  alert('berhasil dihapus');
+  location.reload();
 }
 
 function liffOpenWindow() {

@@ -195,7 +195,7 @@
 
             <div>
               <h3 class="primary-color page-title mx-3">Recommendation</h3>
-              <div id="charactersList"></div>
+              <div id="listRecommendation"></div>
             </div>
           </div>
         </div>
@@ -258,6 +258,15 @@
         <!-- Order Page -->
         <div id="order" style="display: none">
           <h3 class="primary-color page-title m-3">ORDER HISTORY</h3>
+          <div class="row m-2 align-items-center">
+            <div class="col-8">Hapus data transaksi</div>
+            <div class="col-4 text-right">
+              :
+              <button class="btn btn-sm btn-danger m-1" onclick="clearOrder();">
+                Hapus
+              </button>
+            </div>
+          </div>
           <div id="order-content" class="order-wrapper"></div>
         </div>
 
@@ -515,39 +524,41 @@
           <div class="modal-content">
             <div class="modal-body">
               <p id="modal-message" class="text-center">Hallo</p>
-            </div>
-            <div class="text-center">Thanks for rating us!</div>
-            <div class="mb-3">
-              <div class="container text-center">
-                <div class="star-widget">
-                  <input type="radio" name="rate" id="rate-5" />
-                  <label for="rate-5" class="fas fa-star"></label>
-                  <input type="radio" name="rate" id="rate-4" />
-                  <label for="rate-4" class="fas fa-star"></label>
-                  <input type="radio" name="rate" id="rate-3" />
-                  <label for="rate-3" class="fas fa-star"></label>
-                  <input type="radio" name="rate" id="rate-2" />
-                  <label for="rate-2" class="fas fa-star"></label>
-                  <input type="radio" name="rate" id="rate-1" />
-                  <label for="rate-1" class="fas fa-star"></label>
-                  <form action="#">
-                    <header></header>
-                    <div class="textarea">
-                      <textarea
-                        cols="30"
-                        placeholder="Describe your experience.."
-                      ></textarea>
-                    </div>
-                    <div class="btn-rating">
-                      <button
-                        type="submit"
-                        class="btn btn-sm btn-secondary"
-                        data-dismiss="modal"
-                      >
-                        Oke
-                      </button>
-                    </div>
-                  </form>
+              <div class="mb-3">
+                <div class="container text-center">
+                  <div class="star-widget">
+                    <input type="radio" name="rate" id="rate-5" />
+                    <label for="rate-5" class="fas fa-star"></label>
+                    <input type="radio" name="rate" id="rate-4" />
+                    <label for="rate-4" class="fas fa-star"></label>
+                    <input type="radio" name="rate" id="rate-3" />
+                    <label for="rate-3" class="fas fa-star"></label>
+                    <input type="radio" name="rate" id="rate-2" />
+                    <label for="rate-2" class="fas fa-star"></label>
+                    <input type="radio" name="rate" id="rate-1" />
+                    <label for="rate-1" class="fas fa-star"></label>
+                    <form action="#">
+                      <header class="d-flex justify-content-center"></header>
+                      <div class="textarea">
+                        <textarea
+                          cols="30"
+                          placeholder="Describe your experience.."
+                        ></textarea>
+                      </div>
+                      <div class="btn-rating">
+                        <button
+                          type="submit"
+                          class="btn btn-sm btn-secondary"
+                          data-dismiss="modal"
+                        >
+                          Oke
+                        </button>
+                        <div class="text-center text-white m-2">
+                          Thanks for rating us!
+                        </div>
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>

@@ -249,7 +249,7 @@ input[type='submit'] {
 
 .container {
   position: relative;
-  width: 400px;
+  /* width: 400px; */
   background: var(--primary-bg);
   padding: 20px 30px;
   border: 1px solid var(--secondary-bg);
@@ -283,7 +283,7 @@ input[type='submit'] {
   display: none;
 }
 .star-widget label {
-  font-size: 40px;
+  font-size: 20px;
   color: var(--secondary-bg);
   padding: 10px;
   float: right;
